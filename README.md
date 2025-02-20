@@ -5,7 +5,7 @@ Repository for Data Management class
 
 ## Dataset Overview
 
-This repository contains data and analysis scripts related to the study titled *"First photographic evidence of oceanic manta rays (*Mobula birostris*) at two locations in the Fiji islands"* by Luke Gordon and Tom Vierus, published in *PeerJ* (2022). The study provides the first confirmed photographic records of oceanic manta rays in Fijian waters, specifically in Laucala Bay near Suva and the Yasawa Island Group.
+This repository contains data and analysis scripts related to the study titled *"First photographic evidence of oceanic manta rays (*Mobula birostris*) at two locations in the Fiji islands"* by Luke Gordon and Tom Vierus, published in *PeerJ* (2022). The study provides the first confirmed photographic records of oceanic manta rays in Fijian waters..
 
 ## Purpose of the Dataset
 
@@ -35,7 +35,7 @@ The dataset includes the following key components:
   - `Date` & `Time`: Timestamp of the sighting.
   - `Behavioural Activity`: Observed behaviour (e.g., feeding, cruising).
   - `Source` & `Source Type`: Observer and affiliation.
-  - `Remora`: Presence of remoras.
+  - `No. Remora`: Presence and number of remoras.
   - `Preg / FMW / YoY`: Reproductive status indicators.
   - `New Injury`: Notes on any observed injuries.
   - `Comments`: Additional observational notes.
