@@ -48,7 +48,7 @@ To ensure transparency and facilitate research:
 2. **Analysis Scripts**: R scripts for data processing and visualisation are in the directory.
 3. **Binder Integration**: Click the badge below to launch the repository interactively on Binder:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/moegamad-uj/data-management-2025/HEAD)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/moegamad-uj/data-management-2025/HEAD?urlpath=%2Frstudio)
 
 4. **Data Citation**: If using this dataset, please cite the original publication:
 
