@@ -1,0 +1,143 @@
+---
+title: "data-management-2025"
+author: "Moegamad Uzair Jack"
+date: "2025-02-21"
+output: html_document
+---
+
+
+## Loading packages 
+Loading all necessary packages for tidy data and analyses
+
+```{r}
+
+library(readr)
+library(tidyverse)
+library(ggplot2)
+library(ggpubr)
+library(conflicted)
+library(lubridate)
+library(dplyr)
+```
+
+## Reading data
+Loading data from csv file and viewing it
+```{r}
+
+RawSightingsData <- read_csv("RawSightingsData.csv")
+View(RawSightingsData)
+
+```
+## Inspecting the structure of the data
+Viewing the structure and summary of the data
+
+```{r}
+
+glimpse(RawSightingsData)
+head(RawSightingsData)
+summary(RawSightingsData)
+
+```
+
+## Column and Cell Cleaning
+Manually clean column names using gsub and replace spaces with underscores and 
+remove special characters
+  
+```{r}
+colnames(RawSightingsData) <- gsub(" ", "_", colnames(RawSightingsData))  
+colnames(RawSightingsData) <- gsub("[^A-Za-z0-9_]", "", 
+                                   colnames(RawSightingsData))  
+```
+## Data Conversion
+Convert 'date' column to Date format
+
+```{r}
+RawSightingsData <- RawSightingsData %>%
+  mutate(Date = as.Date(Date, format = "%d/%m/%Y"))
+```
+
+## Print cleaned column names
+
+```{r}
+print(colnames(RawSightingsData))
+```
+
+## More Column and Cell Cleaning
+Cleaning columns and assigning all invalid or missing data the value NA 
+
+```{r}
+
+columns_to_clean <- c("Size_Class", "Time", "No_Remora", "New_Injury", 
+                      "Preg__FMW__YoY" )
+RawSightingsData[columns_to_clean] <- RawSightingsData[columns_to_clean] %>%
+  lapply(function(x) ifelse(x == "-", NA, x))
+
+columns_to_clean <- c("Sex" )
+RawSightingsData[columns_to_clean] <- RawSightingsData[columns_to_clean] %>%
+  lapply(function(x) ifelse(x == "N/A", NA, x))
+```
+
+## Remove columns where all values are NA
+
+```{r}
+RawSightingsData <- RawSightingsData %>%
+  select(where(~ !all(is.na(.))))
+
+glimpse(RawSightingsData)
+```
+## Deleting redundant columns
+
+```{r}
+ RawSightingsData <- RawSightingsData %>% select(-`Source`, -`Source_Type`)
+
+```
+## LOng Format Conversion
+Convert data to long format
+```{r}
+long_data <- RawSightingsData %>%
+  pivot_longer(cols = c('Behavioural_Activity', 'No_Remora'),
+               names_to = 'Observation_Type',
+               values_to = 'Observation_Value')
+
+long_data <- long_data %>%
+  select(ID_No, Sex, Resight_YN, Date, Region, Observation_Value, Observation_Type, Source_Name)
+
+
+view(long_data)
+```
+## Figure Plotting
+Plotting a stacked bar graph of the Re-sight frequency by region
+```{r}
+resight_frequency <- long_data %>%
+  group_by(Region, `Resight_YN`) %>%
+  summarise(Count = n(), .groups = 'drop') %>%
+  mutate(Percentage = Count / sum(Count) * 100)
+
+ggplot(resight_frequency, aes(x = Region, y = Count, fill = `Resight_YN`)) +
+  geom_col(position = "fill") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  theme_minimal() +
+  labs(title = "Re-sight Frequency by Region (Percentage)",
+       x = "Region",
+       y = "Percentage")
+```
+
+Plotting bar graph of the sex distribution by region
+```{r}
+sex_distribution <- long_data %>%
+  group_by(Region, Sex) %>%
+  summarise(Count = n(), .groups = 'drop')
+
+ggplot(sex_distribution, aes(x = Region, y = Count, fill = Sex)) +
+  geom_col(position = "dodge", width = 0.7) +
+  facet_wrap(~Sex) +
+  theme_minimal() +
+  labs(title = "Sex Distribution by Region",
+       x = "Region",
+       y = "Count")
+
+```
+
+
+
+
