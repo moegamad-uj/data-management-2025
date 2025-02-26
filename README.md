@@ -44,8 +44,8 @@ The dataset includes the following key components:
 
 To ensure transparency and facilitate research:
 
-1. **Data Storage**: All raw data files are in the `data/` directory.
-2. **Analysis Scripts**: R scripts for data processing and visualisation are in the `scripts/` directory.
+1. **Data Storage**: All raw data files are in the directory.
+2. **Analysis Scripts**: R scripts for data processing and visualisation are in the directory.
 3. **Binder Integration**: Click the badge below to launch the repository interactively on Binder:
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/moegamad-uj/data-management-2025/HEAD)
