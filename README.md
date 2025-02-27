@@ -35,7 +35,7 @@ The dataset includes the following key components:
   - `Date` & `Time`: Timestamp of the sighting.
   - `Behavioural Activity`: Observed behaviour (e.g., feeding, cruising).
   - `Source` & `Source Type`: Observer and affiliation.
-  - `No. Remora`: Presence and number of remoras.
+  - `No. Remora`: Presence and number of remoras (species of fish).
   - `Preg / FMW / YoY`: Reproductive status indicators.
   - `New Injury`: Notes on any observed injuries.
   - `Comments`: Additional observational notes.
