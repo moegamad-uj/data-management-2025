@@ -20,7 +20,7 @@ The dataset originates from the supplementary materials of the original publicat
 
 ## License
 
-This dataset is distributed under the **Creative Commons Attribution License (CC BY 4.0)**. This allows unrestricted use, distribution, and reproduction in any medium, provided proper credit is given to the original authors. More details on the license can be found [here](https://creativecommons.org/licenses/by/4.0/).
+This dataset is distributed under the **Creative Commons Attribution License (CC BY 4.0)**. This permits unrestricted use, distribution, reproduction and adaptation in any medium and for any purpose provided that it is properly attributed, provided that proper credit is given to the original authors. More details on the license can be found [here](https://creativecommons.org/licenses/by/4.0/).
 
 ## Metadata
 
